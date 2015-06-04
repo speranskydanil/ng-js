@@ -16,11 +16,23 @@
 
   <body ng-app>
     <nav class="navbar navbar-default">
-      <h1>ng-js</h1>
+      <h1>
+        ng-js
+        <br>
+        <small>Angular JS micro version (for learning)</small>
+      </h1>
+
+      <div class="container">
+        <a href="https://github.com/speranskydanil/ng-js" class="btn btn-default">View on GitHub</a>
+        <a href="https://github.com/speranskydanil/ng-js/zipball/master" class="btn btn-default">Download .zip</a>
+        <a href="https://github.com/speranskydanil/ng-js/tarball/master" class="btn btn-default">Download .tar.gz</a>
+      </div>
     </nav>
 
     <div class="container">
       <h1>Hello, World!</h1>
+
+      <p>Basic example of data-binding. Just try to type.</p>
 
       <div class="row">
         <div class="col-md-3" ng-controller="HelloWorld as hw" ng-init="hw.greeting = 'Hello'; hw.name = 'World';">
@@ -64,6 +76,8 @@
       </div>
 
       <h1>To-do list</h1>
+
+      <p>Example with a controller and a service. Try to add and remove items. It's also persistent, try to reload the page.</p>
 
       <div class="row">
         <div class="col-md-4" ng-controller="Todo">
@@ -160,6 +174,8 @@ ng.service('storage', ['_'], function (_) {
       </div>
 
       <h1>Forms</h1>
+
+      <p>Example with forms, working data-binding for different types of controls.</p>
 
       <div class="row">
         <div class="col-md-4">
@@ -259,6 +275,16 @@ ng.service('storage', ['_'], function (_) {
           </div>
         </div>
       </div>
+
+      <hr>
+
+      <p>
+        <strong>Author (Speransky Danil):</strong>
+        <a href="http://dsperansky.info">Personal Page</a> |
+        <a href="http://ru.linkedin.com/in/speranskydanil/en">LinkedIn</a> |
+        <a href="https://github.com/speranskydanil?tab=repositories">GitHub</a> |
+        <a href="http://stackoverflow.com/users/1550807/speransky-danil">StackOverflow</a>
+      </p>
     </div>
   </body>
  </html>

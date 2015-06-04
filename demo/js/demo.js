@@ -47,3 +47,13 @@ ng.controller('Forms', [], function () {
   this.country = 'rus';
 });
 
+(function () {
+  var _ = ng.resolve('_');
+
+  var storage = ng.resolve('storage');
+
+  if (!storage.get('items')) storage.set('items', _.map(_.range(1, 8), function (n) { return { name: 'My to-do item #' + n }; }));
+
+  if (!storage.get('newItem')) storage.set('newItem', 'Yet another to-do item..');
+})();
+

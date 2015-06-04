@@ -1,9 +1,14 @@
 body {
   margin-bottom: 40px;
+  font-size: 16px;
 }
 
 .navbar h1 {
   margin: 20px 0px;
+  text-align: center;
+}
+
+.navbar .container {
   text-align: center;
 }
 
