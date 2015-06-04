@@ -8,6 +8,8 @@ because it's much more easier to explain something about 400 lines of code, then
 
 It's not for production, it's not tested well, and there was no effort to optimize performance, so it's slow.
 
+## <a href="http://speranskydanil.github.io/ng-js/demo/index.html">DEMO</a>
+
 ## What's implemented
 
 Only really basic features are implemented.<br>
