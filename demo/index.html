@@ -264,12 +264,12 @@ ng.service('storage', ['_'], function (_) {
             </div>
 
             <div class="tab-pane" id="c3-js">
-              <pre><code class="js">ng.controller('Forms', [], function (scope) {
-  scope.name    = 'Speransky Danil';
-  scope.about   = 'Software Engineer';
-  scope.adult   = true;
-  scope.gender  = 'male';
-  scope.country = 'rus';
+              <pre><code class="js">ng.controller('Forms', [], function () {
+  this.name    = 'Speransky Danil';
+  this.about   = 'Software Engineer';
+  this.adult   = true;
+  this.gender  = 'male';
+  this.country = 'rus';
 });</code></pre>
             </div>
           </div>
