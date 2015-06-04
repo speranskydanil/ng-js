@@ -1,0 +1,291 @@
+<!doctype html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/highlight.css">
+    <link rel="stylesheet" href="css/demo.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/highlight.js"></script>
+    <script src="../dist/ng.js"></script>
+    <script src="js/demo.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body ng-app>
+    <nav class="navbar navbar-default">
+      <h1>
+        ng-js
+        <br>
+        <small>Angular JS micro version (for learning)</small>
+      </h1>
+
+      <div class="container">
+        <a href="https://github.com/speranskydanil/ng-js" class="btn btn-default">View on GitHub</a>
+        <a href="https://github.com/speranskydanil/ng-js/zipball/master" class="btn btn-default">Download .zip</a>
+        <a href="https://github.com/speranskydanil/ng-js/tarball/master" class="btn btn-default">Download .tar.gz</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>Hello, World!</h1>
+
+      <p>Basic example of data-binding. Just try to type.</p>
+
+      <div class="row">
+        <div class="col-md-3" ng-controller="HelloWorld as hw" ng-init="hw.greeting = 'Hello'; hw.name = 'World';">
+          <label>Greeting:</label>
+          <input type="text" class="form-control" ng-model="hw.greeting">
+
+          <label>Name:</label>
+          <input type="text" class="form-control" ng-model="hw.name">
+
+          <h3 ng-bind="hw.greeting + ', ' + hw.name + '!'"></h3>
+        </div>
+
+        <div class="col-md-9">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#c1-html" data-toggle="tab">HTML</a>
+            </li>
+            <li>
+              <a href="#c1-js" data-toggle="tab">JS</a>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="c1-html">
+              <pre><code class="html">&lt;div ng-controller=&quot;HelloWorld as hw&quot; ng-init=&quot;hw.greeting = 'Hello'; hw.name = 'World';&quot;&gt;
+  &lt;label&gt;Greeting:&lt;/label&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;hw.greeting&quot;&gt;
+
+  &lt;label&gt;Name:&lt;/label&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;hw.name&quot;&gt;
+
+  &lt;h3 ng-bind=&quot;hw.greeting + ', ' + hw.name + '!'&quot;&gt;&lt;/h3&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div class="tab-pane" id="c1-js">
+              <pre><code class="js">// no js is needed</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h1>To-do list</h1>
+
+      <p>Example with a controller and a service. Try to add and remove items. It's also persistent, try to reload the page.</p>
+
+      <div class="row">
+        <div class="col-md-4" ng-controller="Todo">
+          <input type="text" class="form-control" ng-model="newItem" ng-change="saveNewItemValue()">
+          <button class="btn btn-default" ng-click="addItem()">Add</button>
+
+          <p ng-show="items.length >= 5" ng-class="{ warning: items.length >= 7 }">
+            You have <span ng-bind="items.length"></span> items on the list.
+            It's time to organize yourself :)
+          </p>
+
+          <ul ng-repeat="item in items">
+            <li>
+              <button class="close" ng-click="removeItem(item)">&times;</button>
+              <span ng-bind="item.name"></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-8">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#c2-html" data-toggle="tab">HTML</a>
+            </li>
+            <li>
+              <a href="#c2-js" data-toggle="tab">JS</a>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="c2-html">
+              <pre><code class="html">&lt;div ng-controller=&quot;Todo&quot;&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;newItem&quot; ng-change=&quot;saveNewItemValue()&quot;&gt;
+  &lt;button ng-click=&quot;addItem()&quot;&gt;Add&lt;/button&gt;
+
+  &lt;p ng-show=&quot;items.length &gt;= 5&quot; ng-class=&quot;{ warning: items.length &gt;= 7 }&quot;&gt;
+    You have &lt;span ng-bind=&quot;items.length&quot;&gt;&lt;/span&gt; items on the list.
+    It's time to organize yourself :)
+  &lt;/p&gt;
+
+  &lt;ul ng-repeat=&quot;item in items&quot;&gt;
+    &lt;li&gt;
+      &lt;button ng-click=&quot;removeItem(item)&quot;&gt;&amp;times;&lt;/button&gt;
+      &lt;span ng-bind=&quot;item.name&quot;&gt;&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div class="tab-pane" id="c2-js">
+              <pre><code class="js">ng.controller('Todo', ['_', 'storage'], function (_, storage) {
+  var self = this;
+
+  self.newItem = storage.get('newItem') || '';
+
+  self.items = storage.get('items') || [];
+
+  self.saveNewItemValue = function () {
+    storage.set('newItem', self.newItem);
+  }
+
+  self.addItem = function () {
+    self.items.push({ name: self.newItem });
+    storage.set('items', self.items);
+  };
+
+  self.removeItem = function (item) {
+    self.items = _.without(self.items, item);
+    storage.set('items', self.items);
+  }
+});
+
+ng.service('storage', ['_'], function (_) {
+  return {
+    get: function (key) {
+      try {
+        return JSON.parse(localStorage.getItem(key));
+      } catch (err) {
+        return localStorage.getItem(key);
+      }
+    },
+    set: function (key, value) {
+      if (_.isObject(value) || _.isArray(value)) {
+        value = JSON.stringify(value);
+      }
+
+      localStorage.setItem(key, value);
+    }
+  }
+});</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h1>Forms</h1>
+
+      <p>Example with forms, working data-binding for different types of controls.</p>
+
+      <div class="row">
+        <div class="col-md-4">
+          <form method="post" action="http://google.com" ng-controller="Forms">
+            <label>Name</label>
+            <input type="text" class="form-control" ng-model="name">
+
+            <label>About</label>
+            <textarea class="form-control" ng-model="about"></textarea>
+
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="adult"> Adult
+              </label>
+            </div>
+
+            <label>Gender</label>
+            <div>
+              <label class="radio-inline">
+                <input type="radio" name="gender" value="male" ng-model="gender"> Male
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="gender" value="female" ng-model="gender"> Female
+              </label>
+            </div>
+
+            <label>Country</label>
+            <select class="form-control" ng-model="country">
+              <option value="usa">America</option>
+              <option value="eng">England</option>
+              <option value="rus">Russia</option>
+            </select>
+
+            <button type="submit" class="btn btn-default" ng-click="alert($inspect())">Submit</button>
+
+            <pre ng-bind="$inspect()"></pre>
+          </form>
+        </div>
+
+        <div class="col-md-8">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#c3-html" data-toggle="tab">HTML</a>
+            </li>
+            <li>
+              <a href="#c3-js" data-toggle="tab">JS</a>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="c3-html">
+              <pre><code class="html">&lt;form method=&quot;post&quot; action=&quot;http://google.com&quot; ng-controller=&quot;Forms&quot;&gt;
+  &lt;label&gt;Name&lt;/label&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;name&quot;&gt;
+
+  &lt;label&gt;About&lt;/label&gt;
+  &lt;textarea ng-model=&quot;about&quot;&gt;&lt;/textarea&gt;
+
+  &lt;div&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;checkbox&quot; ng-model=&quot;adult&quot;&gt; Adult
+    &lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;label&gt;Gender&lt;/label&gt;
+  &lt;div&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;male&quot; ng-model=&quot;gender&quot;&gt; Male
+    &lt;/label&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;female&quot; ng-model=&quot;gender&quot;&gt; Female
+    &lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;label&gt;Country&lt;/label&gt;
+  &lt;select ng-model=&quot;country&quot;&gt;
+    &lt;option value=&quot;usa&quot;&gt;America&lt;/option&gt;
+    &lt;option value=&quot;eng&quot;&gt;England&lt;/option&gt;
+    &lt;option value=&quot;rus&quot;&gt;Russia&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;button type=&quot;submit&quot; ng-click=&quot;alert($inspect())&quot;&gt;Submit&lt;/button&gt;
+
+  &lt;pre ng-bind=&quot;$inspect()&quot;&gt;&lt;/pre&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+
+            <div class="tab-pane" id="c3-js">
+              <pre><code class="js">ng.controller('Forms', [], function (scope) {
+  scope.name    = 'Speransky Danil';
+  scope.about   = 'Software Engineer';
+  scope.adult   = true;
+  scope.gender  = 'male';
+  scope.country = 'rus';
+});</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <p>
+        <strong>Author (Speransky Danil):</strong>
+        <a href="http://dsperansky.info">Personal Page</a> |
+        <a href="http://ru.linkedin.com/in/speranskydanil/en">LinkedIn</a> |
+        <a href="https://github.com/speranskydanil?tab=repositories">GitHub</a> |
+        <a href="http://stackoverflow.com/users/1550807/speransky-danil">StackOverflow</a>
+      </p>
+    </div>
+  </body>
+ </html>
+
