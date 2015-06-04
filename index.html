@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>ng-js by speranskydanil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">ng-js</h1>
+      <h2 class="project-tagline">Angular JS micro version (for learning)</h2>
+      <a href="https://github.com/speranskydanil/ng-js" class="btn">View on GitHub</a>
+      <a href="https://github.com/speranskydanil/ng-js/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/speranskydanil/ng-js/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="ng-js" class="anchor" href="#ng-js" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-js</h1>
+
+<p>Angular JS micro version (for learning).</p>
+
+<p>It's developed for fun and to learn internals of the AngularJS framework.<br>
+And also to have a light version of it to train other people,<br>
+because it's much more easier to explain something about 400 lines of code, then about 10 000 loc.</p>
+
+<p>It's not for production, it's not tested well, and there was no effort to optimize performance, so it's slow.</p>
+
+<h2>
+<a id="whats-implemented" class="anchor" href="#whats-implemented" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's implemented</h2>
+
+<p>Only really basic features are implemented.<br>
+And they are implemented in a simplified form.<br>
+Also APIs may be different.<br>
+The list:</p>
+
+<ul>
+<li>predefined directives</li>
+<li>API for custom directives (<code>priority</code>, <code>link</code>, <code>terminal</code> and <code>scope</code> properties are available)</li>
+<li>controllers (slightly different syntax), nested controllers</li>
+<li>services (called factories in AngularJS) and values (shortcut)</li>
+<li>dependency injection and resolver (but only services and values could be injected)</li>
+<li>scopes, nested scopes</li>
+<li>watchers</li>
+<li>expressions and parser (unlike in AngularJS it's implemented with <code>eval</code> to simplify implementation)</li>
+<li>compilation (tree traversal) and applying directives</li>
+<li>dirty checking and digest cycle</li>
+</ul>
+
+<p>Next directives are predefined:</p>
+
+<ul>
+<li>ng-render (one-time binding)</li>
+<li>ng-bind</li>
+<li>ng-model</li>
+<li>ng-controller</li>
+<li>ng-init</li>
+<li>ng-repeat (just recompiling, no optimizations)</li>
+<li>ng-click</li>
+<li>ng-change</li>
+<li>ng-show</li>
+<li>ng-hide</li>
+<li>ng-class</li>
+</ul>
+
+<h2>
+<a id="whats-not-implemented" class="anchor" href="#whats-not-implemented" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's not implemented</h2>
+
+<p>There are many features not implemented, mainly to not complicate the code.<br>
+It's simple actually to implement them within the built structure.<br>
+But it was decided it's superfluous when expressing the concept.<br>
+The list:</p>
+
+<ul>
+<li>modules and multiple ng-app</li>
+<li>
+<code>config</code> and <code>run</code> methods</li>
+<li><code>ng-include</code></li>
+<li>routing</li>
+<li>
+<code>$http</code>, <code>$resource</code>, <code>$q</code>, <code>$timeout</code>, <code>$interval</code>
+</li>
+<li>events</li>
+<li>validations</li>
+<li>filters</li>
+</ul>
+
+<h2>
+<a id="code-statistics" class="anchor" href="#code-statistics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code statistics</h2>
+
+<p>The numbers are indicated without empty lines and included underscore methods.</p>
+
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>How much</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the core</td>
+<td>250 loc</td>
+</tr>
+<tr>
+<td>with directives</td>
+<td>400 loc</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>JSHint stats:</strong></p>
+
+<p>There are 92 functions in this file.<br>
+Function with the largest signature take 3 arguments, while the median is 1.<br>
+Largest function has 8 statements in it, while the median is 2.<br>
+The most complex function has a cyclomatic complexity value of 6 while the median is 1.<br></p>
+
+<p><em>So I hope it's easy to learn</em>.</p>
+
+<p><strong>Author (Speransky Danil):</strong>
+<a href="http://dsperansky.info">Personal Page</a> |
+<a href="http://ru.linkedin.com/in/speranskydanil/en">LinkedIn</a> |
+<a href="https://github.com/speranskydanil?tab=repositories">GitHub</a> |
+<a href="http://stackoverflow.com/users/1550807/speransky-danil">StackOverflow</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/speranskydanil/ng-js">ng-js</a> is maintained by <a href="https://github.com/speranskydanil">speranskydanil</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-48799405-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
+
