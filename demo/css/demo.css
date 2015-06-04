@@ -1,0 +1,65 @@
+body {
+  margin-bottom: 40px;
+}
+
+.navbar h1 {
+  margin: 20px 0px;
+  text-align: center;
+}
+
+.container h1 {
+  margin: 20px 0px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #eee;
+}
+
+.form-control,
+.btn {
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+
+.nav-tabs {
+  margin-bottom: 10px;
+}
+
+pre {
+  border: none;
+  padding: 0px;
+}
+
+pre code {
+  font-size: 15px
+}
+
+div[ng-controller="Todo"] .form-control,
+div[ng-controller="Todo"] .btn {
+  display: inline-block;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+div[ng-controller="Todo"] .warning {
+  color: #d33;
+}
+
+div[ng-controller="Todo"] ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+div[ng-controller="Todo"] li {
+  width: 300px;
+  height: 30px;
+}
+
+div[ng-controller="Todo"] .close {
+  float: left;
+  margin-right: 10px
+}
+
+form > div {
+  margin-bottom: 10px;
+}
+
