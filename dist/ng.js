@@ -1248,10 +1248,11 @@ ng.directive('ng-model', ['_'], function (_) {
       var expression = attrs[this.name];
 
       scope.$watch(expression, function (value) {
-        if (type == 'input' || type == 'select') el.val(value);
-        if (type == 'textarea')                  el.html(value);
-        if (type == 'checkbox')                  el.prop('checked', value);
-        if (type == 'radio')                     el.prop('checked', el.val() == value);
+        if ((type == 'input' || type == 'select') && value != el.val()) el.val(value);
+
+        if (type == 'textarea') el.html(value);
+        if (type == 'checkbox') el.prop('checked', value);
+        if (type == 'radio')    el.prop('checked', el.val() == value);
       });
 
       el.on('change click keyup keypress', function () {
